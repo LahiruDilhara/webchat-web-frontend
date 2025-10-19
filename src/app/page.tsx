@@ -1,131 +1,22 @@
-"use client";
-import { useState, useEffect } from "react";
-import { Heart, MessageCircle, Sparkles, ArrowRight, Lock, Zap, Smile } from "lucide-react";
-import PageRoutes from "./pageRoutes";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Root() {
-  const [mounted, setMounted] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   return (
-    <div className="w-full h-full relative overflow-y-auto overflow-x-hidden bg-background text-on-background">
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-10">
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
-              opacity: 0.08
-            }}
-          >
-            <Heart size={20 + Math.random() * 30} className="fill-accent" />
+    <div className="h-full p-lg flex flex-col relative overflow-hidden">
+      <div className="flex flex-row items-center min-h-0 justify-between">
+        <div className="flex flex-col gap-2xl min-h-0 pb-2xl">
+          <div className="">
+            <h1 className="text-hero">Chat Smarter.<br></br>Connect Faster.<br></br>Collaborate Effortlessly</h1>
+            <p className="mt-4 text-lg text-gray-600">Expertience the instant communication with our real-time WebChat application. Seemlessly connect with your team, friends and familly</p>
           </div>
-        ))}
-      </div>
-
-      <div className="relative w-full min-h-full flex items-center justify-center z-0">
-        <div className="w-full px-4 sm:px-6 py-12 sm:py-16 max-w-6xl mx-auto">
-          
-          <div className="mb-8 relative flex justify-center">
-            <div className="absolute inset-0 blur-3xl opacity-20 rounded-full bg-primary"></div>
-            <div className="relative p-6 rounded-full bg-surface">
-              <MessageCircle size={64} className="text-primary" strokeWidth={1.5} />
-            </div>
-          </div>
-
-          <h1 className="text-h1 mb-4 text-center relative">
-            <span className="inline-block">WebChat</span>
-            <Sparkles 
-              size={32} 
-              className="inline-block ml-2 animate-pulse text-accent" 
-            />
-          </h1>
-
-          <p className="text-h3 mb-3 text-center opacity-80 text-nowrap mx-auto">
-            Our Private Space
-          </p>
-          
-          <p className="text-body mb-10 text-center opacity-60 text-nowrap mx-auto">
-            A special place built with love, where every conversation brings us closer together
-          </p>
-
-          <div className="flex justify-center mb-16">
-            <button className="cursor-pointer group relative px-8 py-4 rounded-full text-button transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-3 bg-primary text-on-primary hover:bg-primary-hover" onClick={() => router.push(PageRoutes.HOME)}>
-              Start Chatting
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full max-w-5xl mx-auto mb-12">
-            <div className="text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 bg-surface">
-              <div className="mb-4 flex justify-center">
-                <div className="p-4 rounded-full bg-primary/15">
-                  <Lock size={32} className="text-primary" />
-                </div>
-              </div>
-              <h3 className="text-h3 mb-3">Just for Us</h3>
-              <p className="text-body opacity-70">Your private conversations, safe and secure</p>
-            </div>
-
-            <div className="text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 bg-surface">
-              <div className="mb-4 flex justify-center">
-                <div className="p-4 rounded-full bg-primary/15">
-                  <Zap size={32} className="text-primary" />
-                </div>
-              </div>
-              <h3 className="text-h3 mb-3">Real-time</h3>
-              <p className="text-body opacity-70">Instant messages, bringing us closer</p>
-            </div>
-
-            <div className="text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 bg-surface">
-              <div className="mb-4 flex justify-center">
-                <div className="p-4 rounded-full bg-primary/15">
-                  <Smile size={32} className="text-primary" />
-                </div>
-              </div>
-              <h3 className="text-h3 mb-3">Made with Love</h3>
-              <p className="text-body opacity-70">Built especially for you</p>
-            </div>
-          </div>
-
-          <div className="text-center pb-8">
-            <p className="text-caption opacity-50 flex items-center justify-center gap-2">
-              Created with <Heart size={14} className="fill-accent" /> for my love
-            </p>
-          </div>
+          <div className="bg-primary py-md px-lg rounded-2xl w-fit text-h3 cursor-pointer hover:brightness-75">Get Started Free</div>
         </div>
+        <Image src="/images/landingLogo.svg" alt="Landing Logo" width={750} height={750} />
       </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) rotate(0deg);
-          }
-          25% {
-            transform: translateY(-20px) rotate(5deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(-5deg);
-          }
-          75% {
-            transform: translateY(-30px) rotate(3deg);
-          }
-        }
-        .animate-float {
-          animation: float linear infinite;
-        }
-      `}</style>
+      <div className="absolute top-150 right-160 z-10 rotate-10">
+        <svg className="w-340 h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fillOpacity="1" d="M0,96L21.8,96C43.6,96,87,96,131,90.7C174.5,85,218,75,262,101.3C305.5,128,349,192,393,186.7C436.4,181,480,107,524,90.7C567.3,75,611,117,655,144C698.2,171,742,181,785,160C829.1,139,873,85,916,58.7C960,32,1004,32,1047,53.3C1090.9,75,1135,117,1178,128C1221.8,139,1265,117,1309,138.7C1352.7,160,1396,224,1418,256L1440,288L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>
+      </div>
     </div>
   );
 }
